@@ -39,7 +39,10 @@ type Category = { id: number; name: string; description: string }
 type Role = { id: number; roleName: string; description: string }
 
 // API endpoints
-const API_BASE = "http://localhost:8080"
+const API_BASE = "https://790544547c91.ngrok-free.app";
+
+
+
 
 // Utilitaire pour les requêtes API avec gestion d'erreurs améliorée
 // apiRequest.ts
@@ -50,6 +53,7 @@ export const apiRequest = async (url: string, options: RequestInit = {}) => {
 
   const headers = {
     "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true",
     ...(token ? { Authorization: `Bearer ${token}` } : {})
   };
 
@@ -151,6 +155,7 @@ if (!token) {
       const categoriesData = await apiRequest(`${API_BASE}/api/salon/categories`);
       setCategories(categoriesData);
     } catch (error) {
+      console.log("API_BASE:", API_BASE);
       console.error("Erreur chargement catégories:", error);
       setNotification({ type: "error", message: "Erreur lors du chargement des catégories" });
     } finally {
