@@ -60,7 +60,7 @@ export default function LandingPage() {
 
   const services = [
     {
-      name: "Signature Cut",
+      name: "najat ",
       price: 45,
       duration: "60 min",
       image: "/placeholder.svg?height=200&width=300",
